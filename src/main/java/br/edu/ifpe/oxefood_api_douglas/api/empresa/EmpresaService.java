@@ -1,5 +1,7 @@
 package br.edu.ifpe.oxefood_api_douglas.api.empresa;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,5 +28,13 @@ public class EmpresaService {
     public Empresa cadastrar(EmpresaDTO dto) {
         Empresa empresa = build(dto);
         return repository.save(empresa);
+    }
+
+    public List<Empresa> listar() {
+        return repository.findAll();
+    }
+
+    public Empresa buscarPorId(Long id) {
+        return repository.findById(id).get();
     }
 }

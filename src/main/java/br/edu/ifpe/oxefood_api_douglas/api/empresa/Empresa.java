@@ -2,6 +2,8 @@ package br.edu.ifpe.oxefood_api_douglas.api.empresa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,10 +18,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Empresa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
     @Column
     private String site;
 
-    @Id
     @Column
     private String cnpj;
 
