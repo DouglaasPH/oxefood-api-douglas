@@ -31,7 +31,7 @@ public class ProdutoService {
     }
 
     @Transactional
-    public Produto cadastrar(ProdutoDTO dto) throws ProdutoException {
+    public Produto cadastrar(ProdutoDTO dto) {
         Produto produto = build(dto);
 
         if (produto.getValorUnitario() < 10) {
