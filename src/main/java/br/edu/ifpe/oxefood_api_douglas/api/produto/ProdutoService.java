@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.edu.ifpe.oxefood_api_douglas.exception.ProdutoException;
+
 @Service
 public class ProdutoService {
     private final ProdutoRepository repository;
@@ -29,8 +31,12 @@ public class ProdutoService {
     }
 
     @Transactional
-    public Produto cadastrar(ProdutoDTO dto) {
+    public Produto cadastrar(ProdutoDTO dto) throws ProdutoException {
         Produto produto = build(dto);
+
+        if (produto.getValorUnitario() < 10) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
+        }
         return repository.save(produto);
     }
 

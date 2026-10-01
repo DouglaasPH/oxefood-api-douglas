@@ -1,0 +1,9 @@
+package br.edu.ifpe.oxefood_api_douglas.exception;
+
+public class ProdutoException extends Exception {
+    public static final String MSG_VALOR_MINIMO_PRODUTO = "Não é permitido inserir produtos com valores inferiores a R$ 10.";
+
+    public ProdutoException(String msg) {
+        super(String.format(msg));
+    }
+}
