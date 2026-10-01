@@ -35,4 +35,12 @@ public class EmpresaController {
 
         return ResponseEntity.ok(empresaService.buscarPorId(id));
     }
+
+    @PostMapping
+    public ResponseEntity<Empresa> atualizar(@RequestBody EmpresaDTO dto) {
+        
+        Empresa empresaAtualizado = empresaService.atualizar(dto);
+        return ResponseEntity.ok(empresaAtualizado);
+    }
+    
 }

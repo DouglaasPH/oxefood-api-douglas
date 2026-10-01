@@ -13,6 +13,11 @@ public class ProdutoService {
 
     public Produto build(ProdutoDTO dto) {
         Produto produto = new Produto();
+
+        if (dto.getId() != null) {
+            produto = repository.findById(dto.getId()).get();
+        }
+
         produto.setCodigo(dto.getCodigo());
         produto.setTitulo(dto.getTitulo());
         produto.setDescricao(dto.getDescricao());
@@ -35,5 +40,11 @@ public class ProdutoService {
 
     public Produto buscarPorId(Long id) {
         return repository.findById(id).get();
+    }
+
+    @Transactional 
+    public Produto atualizar(ProdutoDTO dto) {
+        Produto produto = build(dto);
+        return repository.save(produto);
     }
 }
