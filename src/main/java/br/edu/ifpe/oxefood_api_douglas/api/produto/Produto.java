@@ -1,5 +1,6 @@
 package br.edu.ifpe.oxefood_api_douglas.api.produto;
 
+import br.edu.ifpe.oxefood_api_douglas.util.EntidadeAuditavel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produto {
+public class Produto extends EntidadeAuditavel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

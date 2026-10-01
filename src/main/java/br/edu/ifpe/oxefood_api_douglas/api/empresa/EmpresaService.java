@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.edu.ifpe.oxefood_api_douglas.api.cliente.Cliente;
+
 @Service
 public class EmpresaService {
     private final EmpresaRepository repository;
@@ -48,4 +50,13 @@ public class EmpresaService {
         Empresa empresa = build(dto);
         return repository.save(empresa);
     }
+
+    @Transactional
+   public void remover(Long id) {
+
+        Empresa empresa = repository.findById(id).get();
+        empresa.setHabilitado(false);
+        
+        repository.save(empresa);
+   }
 }
